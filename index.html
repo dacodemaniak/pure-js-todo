@@ -1,0 +1,78 @@
+<div App>
+  <div class="statistic-panel">
+    <div class="today-title">
+    </div>
+
+    <ul>
+      <li class="statistic-item active">
+        <span class="badge" TotalTasks></span> tâches dans la liste
+      </li>
+      <li class="statistic-item">
+        <span class="badge" LowPriorityTasks></span> en priorité basse
+      </li>
+      <li class="statistic-item">
+        <span class="badge" MediumPriorityTasks></span> en priorité moyenne
+      </li>
+      <li class="statistic-item">
+        <span class="badge" HighPriorityTasks></span> en priorité haute
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-panel">
+    <form>
+      <div class="form-group">
+        <input type="text" name="task-title" placeholder="Title*">
+      </div>
+
+      <div class="form-group">
+        <input type="date" name="task-date" placeholder="Date*">
+      </div>
+
+      <div class="form-group">
+        <select name="task-priority" size="1">
+          <option value="0">Basse</option>
+          <option value="1">Moyenne</option>
+          <option value="2">Haute</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button id="manage-task" disabled>
+          Add a new task
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="tasks-panel">
+    <div class="toolbar">
+    </div>
+
+    <div class="tasks">
+    </div>
+  </div>
+</div>
+
+<!-- Shadow DOM : template for a task -->
+<template id="task-template">
+  <div class="task">
+    <div class="task-selector">
+      <input type="checkbox">
+    </div>
+    <div class="task-title">
+    </div>
+    <div class="task-priority">
+      <select name="current-priority" size="1">
+        <option value="0">Basse</option>
+        <option value="1">Moyenne</option>
+        <option value="2">Haute</option>
+      </select>
+    </div>
+    <div class="task-deletion">
+      <button type="button" name="task-delete">
+        x
+      </button>
+    </div>
+  </div>
+</template>
