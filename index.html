@@ -1,25 +1,26 @@
-<div App>
+<div App class="tsk-container">
   <div class="statistic-panel">
     <div class="today-title">
+      Here goes the date
     </div>
 
     <ul>
       <li class="statistic-item active">
-        <span class="badge" TotalTasks></span> tâches dans la liste
+        <span class="badge" TotalTasks>0</span> tâches dans la liste
       </li>
       <li class="statistic-item">
-        <span class="badge" LowPriorityTasks></span> en priorité basse
+        <span class="badge" LowPriorityTasks>0</span> en priorité basse
       </li>
       <li class="statistic-item">
-        <span class="badge" MediumPriorityTasks></span> en priorité moyenne
+        <span class="badge" MediumPriorityTasks>0</span> en priorité moyenne
       </li>
       <li class="statistic-item">
-        <span class="badge" HighPriorityTasks></span> en priorité haute
+        <span class="badge" HighPriorityTasks>0</span> en priorité haute
       </li>
     </ul>
   </div>
 
-  <div class="form-panel">
+  <div class="row form-panel">
     <form>
       <div class="form-group">
         <input type="text" name="task-title" placeholder="Title*">
@@ -45,7 +46,7 @@
     </form>
   </div>
 
-  <div class="tasks-panel">
+  <div class="row tasks-panel">
     <div class="toolbar">
     </div>
 
@@ -56,7 +57,7 @@
 
 <!-- Shadow DOM : template for a task -->
 <template id="task-template">
-  <div class="task">
+  <div class="row task">
     <div class="task-selector">
       <input type="checkbox">
     </div>
