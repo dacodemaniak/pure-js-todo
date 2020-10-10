@@ -1,0 +1,16 @@
+/**
+* Design form
+**/
+form {}
+
+form .tsk-form-group {
+  display: flex;
+  padding:0 1em 0 1em;
+  margin: 1em auto;
+}
+
+form .tsk-form-group [input].tsk-form-control {
+  border: solid 1px var(--default);
+  border-radius: .5em;
+  padding: .5em;
+}

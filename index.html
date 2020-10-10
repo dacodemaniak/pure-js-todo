@@ -21,24 +21,28 @@
   </div>
 
   <div class="row form-panel">
-    <form>
-      <div class="form-group">
-        <input type="text" name="task-title" placeholder="Title*">
+    <form id="tsk-todo-form">
+      <div class="tsk-form-group">
+        <input class="tsk-form-control" type="text" name="task-title" placeholder="Title*">
+        <div class="form-error d-none"></div>
       </div>
 
-      <div class="form-group">
-        <input type="date" name="task-date" placeholder="Date*">
+      <div class="tsk-form-group">
+        <input class="tsk-form-control" type="date" name="task-date" placeholder="Date*">
+        <div class="form-error d-none"></div>
       </div>
 
-      <div class="form-group">
-        <select name="task-priority" size="1">
+      <div class="tsk-form-group">
+        <select class="tsk-form-control" name="task-priority" size="1">
+          <option value="" selected>Priorité...</option>
           <option value="0">Basse</option>
           <option value="1">Moyenne</option>
           <option value="2">Haute</option>
         </select>
+        <div class="form-error d-none"></div>
       </div>
 
-      <div class="form-group">
+      <div class="tsk-form-group">
         <button id="manage-task" disabled>
           Add a new task
         </button>

@@ -7,9 +7,54 @@
 
 .tsk-container .row, .tsk-container-fluid .row {
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
 }
 
+/**
+* Grid based on 12 columns
+**/
+.row .col {}
+
+.row .col.d-none {
+  display: none;
+}
+.row .col.tsk-xs1 {
+  flex-basis: 8.33%;
+}
+.row .col.tsk-xs2 {
+  flex-basis: 16.66%;
+}
+.row .col.tsk-xs3 {
+  flex-basis: 25%;
+}
+.row .col.tsk-xs4 {
+  flex-basis: 33.33%;
+}
+.row .col.tsk-xs5 {
+  flex-basis: 41.66%;
+}
+.row .col.tsk-xs6 {
+  flex-basis: 50%;
+}
+.row .col.tsk-xs7 {
+  flex-basis: 58.33%;
+}
+.row .col.tsk-xs8 {
+  flex-basis: 66.66%;
+}
+.row .col.tsk-xs9 {
+  flex-basis: 75%;
+}
+.row .col.tsk-xs10 {
+  flex-basis: 83.33%;
+}
+.row .col.tsk-xs11 {
+  flex-basis: 91.66%;
+}
+.row .col.tsk-xs12 {
+  flex-basis: 100%;
+}
 /**
 * RWD settings
 **/
@@ -17,12 +62,91 @@
   .tsk-container, .tsk-container-fluid {
     width: 100%;
   }
+
+  .row .col.d-none-s {
+  display: none;
+}
+.row .col.tsk-s1 {
+  flex-basis: 8.33%;
+}
+.row .col.tsk-s2 {
+  flex-basis: 16.66%;
+}
+.row .col.tsk-s3 {
+  flex-basis: 25%;
+}
+.row .col.tsk-s4 {
+  flex-basis: 33.33%;
+}
+.row .col.tsk-s5 {
+  flex-basis: 41.66%;
+}
+.row .col.tsk-s6 {
+  flex-basis: 50%;
+}
+.row .col.tsk-s7 {
+  flex-basis: 58.33%;
+}
+.row .col.tsk-s8 {
+  flex-basis: 66.66%;
+}
+.row .col.tsk-s9 {
+  flex-basis: 75%;
+}
+.row .col.tsk-s10 {
+  flex-basis: 83.33%;
+}
+.row .col.tsk-s11 {
+  flex-basis: 91.66%;
+}
+.row .col.tsk-s12 {
+  flex-basis: 100%;
+}
 }
 
 @media screen and (min-width: 48em) {
   .tsk-container, .tsk-container-fluid  {
     width: 100%;
   }
+  .row .col.d-none-m {
+  display: none;
+}
+.row .col.tsk-m1 {
+  flex-basis: 8.33%;
+}
+.row .col.tsk-m2 {
+  flex-basis: 16.66%;
+}
+.row .col.tsk-m3 {
+  flex-basis: 25%;
+}
+.row .col.tsk-m4 {
+  flex-basis: 33.33%;
+}
+.row .col.tsk-m5 {
+  flex-basis: 41.66%;
+}
+.row .col.tsk-m6 {
+  flex-basis: 50%;
+}
+.row .col.tsk-m7 {
+  flex-basis: 58.33%;
+}
+.row .col.tsk-m8 {
+  flex-basis: 66.66%;
+}
+.row .col.tsk-m9 {
+  flex-basis: 75%;
+}
+.row .col.tsk-m10 {
+  flex-basis: 83.33%;
+}
+.row .col.tsk-m11 {
+  flex-basis: 91.66%;
+}
+.row .col.tsk-m12 {
+  flex-basis: 100%;
+}
 }
 
 @media screen and (min-width: 62em) {
@@ -38,6 +162,46 @@
     display: flex;
     margin: 1em;
   }
+
+.row .col.d-none-l {
+  display: none;
+}
+.row .col.tsk-l1 {
+  flex-basis: 8.33%;
+}
+.row .col.tsk-l2 {
+  flex-basis: 16.66%;
+}
+.row .col.tsk-l3 {
+  flex-basis: 25%;
+}
+.row .col.tsk-l4 {
+  flex-basis: 33.33%;
+}
+.row .col.tsk-l5 {
+  flex-basis: 41.66%;
+}
+.row .col.tsk-l6 {
+  flex-basis: 50%;
+}
+.row .col.tsk-l7 {
+  flex-basis: 58.33%;
+}
+.row .col.tsk-l8 {
+  flex-basis: 66.66%;
+}
+.row .col.tsk-l9 {
+  flex-basis: 75%;
+}
+.row .col.tsk-l10 {
+  flex-basis: 83.33%;
+}
+.row .col.tsk-l11 {
+  flex-basis: 91.66%;
+}
+.row .col.tsk-l12 {
+  flex-basis: 100%;
+}
 }
 
 @media screen and (min-width: 75em) {
@@ -52,4 +216,43 @@
     display: flex;
     margin: 1em;
   }
+.row .col.d-none-xl {
+  display: none;
+}
+.row .col.tsk-xl1 {
+  flex-basis: 8.33%;
+}
+.row .col.tsk-xl2 {
+  flex-basis: 16.66%;
+}
+.row .col.tsk-xl3 {
+  flex-basis: 25%;
+}
+.row .col.tsk-xl4 {
+  flex-basis: 33.33%;
+}
+.row .col.tsk-xl5 {
+  flex-basis: 41.66%;
+}
+.row .col.tsk-xl6 {
+  flex-basis: 50%;
+}
+.row .col.tsk-xl7 {
+  flex-basis: 58.33%;
+}
+.row .col.tsk-xl8 {
+  flex-basis: 66.66%;
+}
+.row .col.tsk-xl9 {
+  flex-basis: 75%;
+}
+.row .col.tsk-xl10 {
+  flex-basis: 83.33%;
+}
+.row .col.tsk-xl11 {
+  flex-basis: 91.66%;
+}
+.row .col.tsk-xl12 {
+  flex-basis: 100%;
+}
 }
