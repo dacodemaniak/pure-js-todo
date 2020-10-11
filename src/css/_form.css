@@ -9,8 +9,12 @@ form .tsk-form-group {
   margin: 1em auto;
 }
 
-form .tsk-form-group [input].tsk-form-control {
+form .tsk-form-group input.tsk-form-control, form .tsk-form-group select.tsk-form-control {
   border: solid 1px var(--default);
   border-radius: .5em;
-  padding: .5em;
+  padding: 1em;
+}
+
+form .tsk-form-group .form-error {
+  color: var(--danger)
 }

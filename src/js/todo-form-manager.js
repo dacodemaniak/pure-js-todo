@@ -10,7 +10,8 @@ fields
     {
       element: document.querySelector('[name="task-title"'),
       required: true,
-      message: 'Title field is required'
+      message: 'Title field is required',
+      tabindex: 1
     }
     
 ).set(
@@ -18,7 +19,8 @@ fields
   {
     element: document.querySelector('[name="task-title"'),
     required: true,
-    message: 'Date field is required'
+    message: 'Date field is required',
+    tabindex: 2
   }
   
 ).set(
@@ -26,7 +28,8 @@ fields
   {
     element: document.querySelector('[name="task-priority"'),
     required: true,
-    message: 'You have to select a priority level'
+    message: 'You have to select a priority level',
+    tabindex: 3
   }
 )
 
@@ -70,8 +73,12 @@ const validateForm = (event) => {
   let isFormValid = true
 
   fields.forEach((field, fieldName) => {
-    isFormValid = isDirty(field, isFormValid)
+    // Only if the field is required
+    if (field.required) {
+      isFormValid = isDirty(field, isFormValid)
+    }
   })
+  // Then update the disabled attribut of the submit button
   toggleDisabledAttr(isFormValid)
 }
 
@@ -79,8 +86,8 @@ const validateForm = (event) => {
 const getNext = (element, selector) => {
   let el = element.nextSibling
   let compareEl = document.querySelector(selector)
+  
   while (el) {
-    console.log(`Found element ${el.nodeName}`)
     if (el === compareEl) {
       return el
     }
@@ -91,19 +98,19 @@ const getNext = (element, selector) => {
 }
 
 const toggleErrorState = (event, hide=false) => {
-  console.log('toggleErrorState')
   const element = event.target
   // Is element belonging to fields map ?
   const fieldName = element.getAttribute('name')
-  const errorDiv = getNext(element, '[class="form-error"]')
+  const errorDiv = getNext(element, `[data-rel="${fieldName}"]`)
   if (fieldName && fields.get(fieldName)) {
     if (hide) {
       // Let's add hidden class to error div
       errorDiv.classList.add('d-none')
     } else {
-      console.log(`Toggling error div`)
-      errorDiv.textContent = 'Error was found'
-      error.classList.remove('d-none')
+      // Get the field definition from the fields collection
+      const field = fields.get(fieldName)
+      errorDiv.textContent = `${field.message}`
+      errorDiv.classList.remove('d-none')
     }
   }
 }
@@ -122,17 +129,35 @@ const todoFormManager = () => {
   )
   
   // Focus and Blur on each field
+  // Focus and Blur may be not available for some field control, so...
+  // We need to use a workaround based on tabindex attribute
+  // Specialized 'select" event for select control field
+  let index = 1
   fields.forEach((field, name) => {
-    field.element.addEventListener(
-      'focus',
-      (event) => toggleErrorState(event, true)
-    )
-    field.element.addEventListener(
-      'blur',
-      (event) => toggleErrorState(event)
-    )    
+    const el = document.querySelector(`[tabindex="${index}"]`)
+    if (el.nodeName !== 'select') {
+      el.addEventListener(
+        'focus',
+        (event) => toggleErrorState(event, true)
+      )
+      el.addEventListener(
+        'blur',
+        (event) => toggleErrorState(event)
+      )
+    } else {
+      el.addEventListener(
+        'click',
+        (event) => {
+          toggleErrorState(event, true)
+        }
+      )
+      el.addEventListener(
+        'blur',
+        (event) => toggleErrorState(event)
+      )      
+    }
+    index++ 
   })
-  
 }
 
 export default todoFormManager

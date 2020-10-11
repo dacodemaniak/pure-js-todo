@@ -21,25 +21,25 @@
   </div>
 
   <div class="row form-panel">
-    <form id="tsk-todo-form">
-      <div class="tsk-form-group">
-        <input class="tsk-form-control" type="text" name="task-title" placeholder="Title*">
-        <div class="form-error d-none"></div>
+    <form id="tsk-todo-form" class="col tsk-xs12">
+      <div class="tsk-form-group row">
+        <input tabindex="1" class="tsk-form-control col tsk-xs12" type="text" name="task-title" placeholder="Title*">
+        <div class="form-error d-none col tsk-xs12" data-rel="task-title"></div>
       </div>
 
-      <div class="tsk-form-group">
-        <input class="tsk-form-control" type="date" name="task-date" placeholder="Date*">
-        <div class="form-error d-none"></div>
+      <div class="tsk-form-group col tsk-xs12">
+        <input tabindex="2" class="tsk-form-control" type="date" name="task-date" placeholder="Date*">
+        <div class="form-error d-none" data-rel="task-date"></div>
       </div>
 
-      <div class="tsk-form-group">
-        <select class="tsk-form-control" name="task-priority" size="1">
+      <div class="tsk-form-group col tsk-xs12">
+        <select tabindex="3" class="tsk-form-control" name="task-priority" size="1">
           <option value="" selected>Priorité...</option>
           <option value="0">Basse</option>
           <option value="1">Moyenne</option>
           <option value="2">Haute</option>
         </select>
-        <div class="form-error d-none"></div>
+        <div class="form-error d-none" data-rel="task-priority"></div>
       </div>
 
       <div class="tsk-form-group">
