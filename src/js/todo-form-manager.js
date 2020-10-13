@@ -1,3 +1,6 @@
+import transform from './ui/select/ui-select'
+import { getNext } from './helpers/dom-traverser'
+
 import './../css/_form.css';
 
 /**
@@ -82,20 +85,7 @@ const validateForm = (event) => {
   toggleDisabledAttr(isFormValid)
 }
 
-// Get next sibling element matching selector
-const getNext = (element, selector) => {
-  let el = element.nextSibling
-  let compareEl = document.querySelector(selector)
-  
-  while (el) {
-    if (el === compareEl) {
-      return el
-    }
-    el = el.nextSibling
-  }
-  
-  return null
-}
+
 
 const toggleErrorState = (event, hide=false) => {
   const element = event.target
@@ -116,7 +106,7 @@ const toggleErrorState = (event, hide=false) => {
 }
 
 const todoFormManager = () => {
-  console.log('todoFormManager')
+  transform()
 
   // Set events manager for keyup, change, focus and blur events
   document.getElementById('tsk-todo-form').addEventListener(
@@ -132,30 +122,21 @@ const todoFormManager = () => {
   // Focus and Blur may be not available for some field control, so...
   // We need to use a workaround based on tabindex attribute
   // Specialized 'select" event for select control field
+
   let index = 1
   fields.forEach((field, name) => {
     const el = document.querySelector(`[tabindex="${index}"]`)
-    if (el.nodeName !== 'select') {
-      el.addEventListener(
+    el.addEventListener(
         'focus',
-        (event) => toggleErrorState(event, true)
-      )
-      el.addEventListener(
-        'blur',
-        (event) => toggleErrorState(event)
-      )
-    } else {
-      el.addEventListener(
-        'click',
         (event) => {
           toggleErrorState(event, true)
         }
-      )
-      el.addEventListener(
+    )
+    el.addEventListener(
         'blur',
         (event) => toggleErrorState(event)
-      )      
-    }
+    )      
+
     index++ 
   })
 }
