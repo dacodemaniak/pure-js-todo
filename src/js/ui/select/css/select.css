@@ -1,38 +1,50 @@
-ul.ui-select  {
-  list-style-type: none;
-  margin: 0;
-  padding-inline-start: 0;
+div.ui-select {
   width: 100%;
 }
 
-ul.ui-select li {
-  width: inherit;
+div.ui-select>div{
+  width: 100%;
+}
+
+div.ui-select ul {
+  list-style-type: none;
+  margin: 0;
+  padding-inline-start: 0;
+  /*width: 100%;*/
+}
+
+
+div.ui-select, div.ui-select ul li {
+  width: 100%;
   border: solid 1px var(--default);
   border-radius: .5em;
   padding: 0.5em;
   display: flex;
 }
 
-ul.ui-select li.active.item-selector {
+div.ui-select ul li.active.item-selector {
   color: var(--primary);
 }
 
-ul.ui-select li div.text {
+ {
+
+}
+div.ui-select div.text {
   display: flex;
   flex-basis: 70%;
   justify-content: flex-start;
 }
-ul.ui-select li div.icon {
+div.ui-select div.icon {
   display: flex;
   justify-content: flex-end;
   flex-basis: 30%;
   transform: rotate(0deg);
 }
 
-ul.ui-select li:not(.active) {
+div.ui-select ul li:not(.active) {
   display: none;
 }
 
-ul.ui-select li:not(.active) div.icon{
+div.ui-select ul li:not(.active) div.icon{
   display: none;
 }

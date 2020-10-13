@@ -5,17 +5,42 @@ import './css/select.css'
 /**
  * Transform simple HTML select / option control to a full ui select
  */
+const toButton = (element) => {
+  const buttonDiv = document.createElement('div');
+  buttonDiv.classList.add('active')
+  buttonDiv.classList.add('item-selector')
+
+  // Get content for the first select item
+  const optionTextContainer = document.createElement('div')
+  optionTextContainer.classList.add('item-option')
+  optionTextContainer.classList.add('text')
+  optionTextContainer.textContent = element.innerHTML
+
+  // Create the open/close icon
+  const openCloseIcon = document.createElement('div')
+  openCloseIcon.classList.add('item-option')
+  openCloseIcon.classList.add('icon')
+  openCloseIcon.classList.add('close')
+  openCloseIcon.textContent = '>'
+
+  buttonDiv.appendChild(optionTextContainer)
+  buttonDiv.appendChild(openCloseIcon)
+
+  return buttonDiv
+}
 
 const toUi = (element) => {
-  // First create a UL element in DOM
+  const ui = document.createElement('div')
+  // Sets some CSS classes to the ul element freshly created
+  ui.classList.add('ui-select')
+  
+  // Next create a UL element in DOM
   const ul = document.createElement('ul')
 
   // Replace tabindex, so... it will be available for the form manager
   ul.setAttribute('tabindex', element.getAttribute('tabindex'))
   ul.setAttribute('name', element.getAttribute('name'))
   
-  // Sets some CSS classes to the ul element freshly created
-  ul.classList.add('ui-select')
 
   // Gets all option from the "original" element and create all the li corresponding
   if (element.hasChildNodes()) {
@@ -23,39 +48,32 @@ const toUi = (element) => {
     let index = 0
     options.forEach((option) => {
       if (option.nodeName === 'OPTION') {
-        const li = document.createElement('li')
+        
         // Make the first li visible : add a specific CSS class to do that
         if (index === 0) {
-          li.classList.add('active')
-          li.classList.add('item-selector')
+          ui.appendChild(toButton(option))
+        } else {
+          const li = document.createElement('li')
+          // Create the option text container
+          const optionTextContainer = document.createElement('div')
+          optionTextContainer.classList.add('item-option')
+          optionTextContainer.classList.add('text')
+          optionTextContainer.textContent = option.innerHTML
+
+          // Set the content of the freshly li from the text content of the original option
+          li.appendChild(optionTextContainer)
+          li.setAttribute('data-value', option.getAttribute('value'))
+
+          // Then append the li as child of the ul
+          ul.appendChild(li)
         }
-        // Create the option text container
-        const optionTextContainer = document.createElement('div')
-        optionTextContainer.classList.add('item-option')
-        optionTextContainer.classList.add('text')
-        optionTextContainer.textContent = option.innerHTML
 
-        // Create the open/close icon
-        const openCloseIcon = document.createElement('div')
-        openCloseIcon.classList.add('item-option')
-        openCloseIcon.classList.add('icon')
-        openCloseIcon.classList.add('close')
-        openCloseIcon.textContent = '>'
-
-        // Set the content of the freshly li from the text content of the original option
-        li.appendChild(optionTextContainer)
-        li.appendChild(openCloseIcon)
-
-        li.setAttribute('data-value', option.getAttribute('value'))
-
-        // Then append the li as child of the ul
-        ul.appendChild(li)
-        
         index++
       }
     })
   }
-  return ul
+  ui.appendChild(ul)
+  return ui
 }
 
 const transform = () => {
