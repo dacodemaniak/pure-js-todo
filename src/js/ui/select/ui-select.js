@@ -5,7 +5,7 @@ import './css/select.css'
 /**
  * Transform simple HTML select / option control to a full ui select
  */
-const toButton = (element) => {
+const toButton = (element, parentSelect) => {
   const buttonDiv = document.createElement('div');
   buttonDiv.classList.add('active')
   buttonDiv.classList.add('item-selector')
@@ -31,17 +31,14 @@ const toButton = (element) => {
 
 const toUi = (element) => {
   const ui = document.createElement('div')
+  ui.setAttribute('tabindex', element.getAttribute('tabindex'))
+  ui.setAttribute('name', element.getAttribute('name'))
   // Sets some CSS classes to the ul element freshly created
   ui.classList.add('ui-select')
-  
+
   // Next create a UL element in DOM
   const ul = document.createElement('ul')
-
-  // Replace tabindex, so... it will be available for the form manager
-  ul.setAttribute('tabindex', element.getAttribute('tabindex'))
-  ul.setAttribute('name', element.getAttribute('name'))
-  
-
+ 
   // Gets all option from the "original" element and create all the li corresponding
   if (element.hasChildNodes()) {
     const options = element.childNodes
@@ -51,7 +48,7 @@ const toUi = (element) => {
         
         // Make the first li visible : add a specific CSS class to do that
         if (index === 0) {
-          ui.appendChild(toButton(option))
+          ui.appendChild(toButton(option, element))
         } else {
           const li = document.createElement('li')
           // Create the option text container
@@ -93,10 +90,13 @@ const transform = () => {
       // Find parent div of this select
       const parentDiv = parentByTag(select, 'div')
       if (parentDiv) {
+        // Replace old html structure with the new one
         parentDiv.removeChild(select)
         parentDiv.removeChild(errorDiv)
         parentDiv.appendChild(uiSelect)
         parentDiv.appendChild(errorDiv)
+
+        // Place event listener on the button div
       }
     })
   })

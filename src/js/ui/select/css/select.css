@@ -4,6 +4,7 @@ div.ui-select {
 
 div.ui-select>div{
   width: 100%;
+  display: flex;
 }
 
 div.ui-select ul {

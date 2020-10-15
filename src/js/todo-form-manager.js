@@ -91,6 +91,7 @@ const toggleErrorState = (event, hide=false) => {
   const element = event.target
   // Is element belonging to fields map ?
   const fieldName = element.getAttribute('name')
+  console.log(`Field name processing : ${fieldName}`)
   const errorDiv = getNext(element, `[data-rel="${fieldName}"]`)
   if (fieldName && fields.get(fieldName)) {
     if (hide) {
